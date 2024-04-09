@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-const { handler } = require('./handler');
+const { addBookHandler } = require('./handler');
 
 const routes = [
   {
-    method: 'GET',
+    method: 'POST',
     path: '/books',
-    handler: () => {},
+    handler: addBookHandler,
   },
 ];
 
