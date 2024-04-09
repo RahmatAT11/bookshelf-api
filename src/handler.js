@@ -67,22 +67,120 @@ const addBookHandler = (request, h) => {
   }
   return response;
 };
-
-// eslint-disable-next-line no-unused-vars
 const getAllBooksHandler = (request, h) => {
+  // eslint-disable-next-line no-unused-vars
+  const { name: nameq, reading, finished } = request.query;
   const newBooks = [];
+
+  if (nameq) {
+    const namedBooks = books.filter((book) => {
+      const { name } = book;
+
+      return name.toLowerCase().includes(nameq.toLowerCase());
+    });
+
+    namedBooks.forEach((book) => {
+      const { id, name, publisher } = book;
+      const newBook = { id, name, publisher };
+      newBooks.push(newBook);
+    });
+
+    const response = h.response({
+      status: 'success',
+      data: {
+        books: newBooks,
+      },
+    });
+    response.code(200);
+    return response;
+  }
+
+  if (reading) {
+    if (reading === '1') {
+      const readBooks = books.filter((book) => {
+        const { reading: isRead } = book;
+
+        return isRead;
+      });
+
+      readBooks.forEach((book) => {
+        const { id, name, publisher } = book;
+        const newBook = { id, name, publisher };
+        newBooks.push(newBook);
+      });
+    } else {
+      const readBooks = books.filter((book) => {
+        const { reading: isRead } = book;
+
+        return !isRead;
+      });
+
+      readBooks.forEach((book) => {
+        const { id, name, publisher } = book;
+        const newBook = { id, name, publisher };
+        newBooks.push(newBook);
+      });
+    }
+
+    const response = h.response({
+      status: 'success',
+      data: {
+        books: newBooks,
+      },
+    });
+    response.code(200);
+    return response;
+  }
+
+  if (finished) {
+    if (finished === '1') {
+      const finishBooks = books.filter((book) => {
+        const { finished: isFinish } = book;
+
+        return isFinish;
+      });
+
+      finishBooks.forEach((book) => {
+        const { id, name, publisher } = book;
+        const newBook = { id, name, publisher };
+        newBooks.push(newBook);
+      });
+    } else {
+      const finishBooks = books.filter((book) => {
+        const { finished: isFinish } = book;
+
+        return !isFinish;
+      });
+
+      finishBooks.forEach((book) => {
+        const { id, name, publisher } = book;
+        const newBook = { id, name, publisher };
+        newBooks.push(newBook);
+      });
+    }
+
+    const response = h.response({
+      status: 'success',
+      data: {
+        books: newBooks,
+      },
+    });
+    response.code(200);
+    return response;
+  }
+
   books.forEach((book) => {
     const { id, name, publisher } = book;
     const newBook = { id, name, publisher };
     newBooks.push(newBook);
   });
+
   const response = h.response({
     status: 'success',
     data: {
       books: newBooks,
     },
   });
-
   response.code(200);
   return response;
 };
