@@ -1,0 +1,25 @@
+{
+  "name": "proyek-bookshelf-api",
+  "version": "1.0.0",
+  "description": "Proyek akhir dicoding, membuat API bookshelf",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "start:dev": "nodemon src/server.js"
+  },
+  "author": "Rahmat Alrafi Trikada",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.3.8",
+    "nanoid": "^5.0.7"
+  }
+}
