@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-const { nanoid } = require('nanoid')
+const { nanoid } = require('nanoid');
 
-const handler = () => {}
+const handler = () => {};
 
-module.exports = { handler }
+module.exports = { handler };
